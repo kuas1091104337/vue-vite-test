@@ -19,7 +19,6 @@ import SvgIcon from './SvgIcon.vue'
     <a target="_blank" href="https://vuejs.org/">official documentation</a>
     provides you with all information you need to get started.
   </WelcomeItem>
-
   <WelcomeItem>
     <template #icon>
       <SvgIcon name="icon-tooling" className="svg-shadow" color="#fff"/>

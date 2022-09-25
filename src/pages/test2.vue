@@ -5,6 +5,7 @@
         numData = reactive({idx:0}),
         dataTxt = ref(''),
         numTxt = ref(''),
+        txtStyle = ref('home'),
         data = reactive({idx:0}),
         toInfoPage = () => window.open("https://hiskio.com/courses/286/about"),
         toCoursePage = () => window.open("https://hiskio.com/courses/286/lectures");
@@ -26,11 +27,16 @@
     num.value++;
     numData.idx++;
   },1000);
-  
+  onMounted(() => {
+    setTimeout(() => {
+      txtStyle.value = 'about';
+    },1500);
+  });
 </script>
 
 <template>
   <div>
+    <ConetntBar :txtStyle="txtStyle"/>
     <p>{{numTxt}}</p>
     <p>{{txt}}</p>
     <p>{{dataTxt}}</p>

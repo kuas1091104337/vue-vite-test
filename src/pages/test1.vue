@@ -33,6 +33,7 @@
           return listArr.filter(item => item.money >= seachMoney.value);
         }),
         boxListH = computed(() => {
+          console.log(boxList.value);
           return isShow.value ? seachArr.value.length*boxList.value[0].offsetHeight+'px' : 0 ;
           // return isShow.value ? listArr.length*boxList.value[0].offsetHeight+'px' : 0 ;
           // return isShow.value ? listArr.length*40+'px' : 0 ;
@@ -55,7 +56,10 @@
 
 <template>
   <div>
-    <input type="number" placeholder="seach money" v-model="seachMoney"/>
+    <div class="wrap">
+      <label for="search">課程 search $</label>
+      <input type="search" id="search" placeholder="seach money" v-model="seachMoney" />
+    </div>
     <div class="box">
       <a class="box_title" @click="showFn">課程列表</a>
       <!-- <ul class="box_wrap" :class="{open:isShow}"> -->
