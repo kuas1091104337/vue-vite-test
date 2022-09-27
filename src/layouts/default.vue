@@ -33,6 +33,9 @@ watch(
         <RouterLink to="/gsap">GSAP</RouterLink>
         <RouterLink to="/course" :class="{acitve: watchLink === 'course'}">Course</RouterLink>
         <RouterLink to="/nested">Nested</RouterLink>
+        <RouterLink to="/vuex">Vuex</RouterLink>
+        <RouterLink to="/vuexApi">VuexApi</RouterLink>
+        <RouterLink to="/compositionApi">CompositionApi</RouterLink>
       </nav>
     </div>
   </header>
