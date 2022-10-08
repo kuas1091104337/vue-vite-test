@@ -1,6 +1,8 @@
 import { ref } from "vue"
 
-export function State(){
-  const idx = ref(0);
-  return { idx }
+export function StateSet(){
+  const idx = ref(0),
+        addState = () => idx.value++,
+        removeState = () => idx.value--;
+  return { idx, addState, removeState }
 }

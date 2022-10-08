@@ -1,14 +1,11 @@
-<script setup>
+<script setup> 
 import { useMenuStore } from '@/stores/menu.js';
 const store = useMenuStore();
-const menuHandle = () => {
-  console.log(store.isOpen);
-};
+console.log(store.isOpen);
 </script>
 
 <template>
   <div :class="['menu', {open:store.isOpen}]">
-    <!-- <a class="menu_btn" @click="menuHandle"> -->
     <a class="menu_btn" @click="store.menuOpen(false)">
       <i class="menu_btn_icon"></i>
     </a>

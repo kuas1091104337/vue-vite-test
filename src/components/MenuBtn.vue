@@ -5,13 +5,12 @@ const store = useMenuStore();
 const menuHandle = () => {
   console.log(store.isOpen);
   store.menuOpen(true);
-};
+}; 
 </script>
 
 <template>
-  <!-- <a :class="['menuBtn',{open:menuOpen}]" @click="menuHandle"> -->
   <a class="menuBtn" @click="menuHandle">
-  <!-- <a class="menuBtn" @click="store.menuOpen"> -->
+  <!-- <a class="menuBtn" @click="store.menuOpen(true)"> -->
     <i class="menuBtn_bar"/>
   </a>
 </template>

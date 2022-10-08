@@ -1,32 +1,38 @@
 <script setup>
-import axios from 'axios';
+import { apiGetHKAcourses_id } from '@/api/index.js';
+import axios from 'axios'; 
 import router from '@/router';
-let timer = null;
-const courseId = reactive({data:{}}),
+let timer = null; 
+const route = useRoute(),
+      courseId = reactive({data:{}}),
       ifError = ref(false);
+      // console.log(route.params.id);
 onMounted(() => {
-  const route = useRoute();
-  // console.log(route.params.id);
-  axios.get('https://vue-lessons-api.herokuapp.com/courses/'+route.params.id)
-  .then((res) => {
-    courseId.data = res.data.data[0];
-    // console.log(res.data.data); console.log(courseId.data);
-  }).catch((error) => {
-    ifError.value = true;
-    courseId.data.error_message = error.response.data.error_message
-    timer = setTimeout(() => {
-      console.log('回上一頁');
-      // router.push('/course');
-      router.push({path:'/course'});
-      // router.go(-1); // 回上一頁
-    },3000);
-    // console.log(error.response.data);
-    console.log(error.response.data.error_message);
-  });
+  // axios.get('https://vue-lessons-api.herokuapp.com/courses/'+route.params.id)
+  // .then((res) => {courseId.data = res.data.data[0]})
+  // .catch((error) => {
+  //   ifError.value = true;
+  //   courseId.data.error_message = error.response.data.error_message
+  //   timer = setTimeout(() => {router.push({path:'/course'})},3000);
+  // });
+  (async () => {
+    try{
+      const res = await apiGetHKAcourses_id(route.params.id);
+      courseId.data = res.data.data[0];
+      console.log(res.data);
+    }catch(error){
+      ifError.value = true;
+      courseId.data.error_message = error.response.data.error_message
+      timer = setTimeout(() => {
+        // router.push('/course');
+        router.push({path:'/course'});
+        // router.go(-1); // 回上一頁
+      },3000);
+      throw new Error(error.response.data.error_message);
+    }
+  })();
 });
-onUnmounted(() => {
-  clearTimeout(timer);
-});
+onUnmounted(() => clearTimeout(timer));
 </script>
 
 <template>

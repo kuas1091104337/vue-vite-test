@@ -1,4 +1,9 @@
 import { MousePosition } from './useMousePosition.js';
-import { State } from './useState';
+import { DivMousePosition } from './useDivMousePosition.js';
+import { FetchsData } from './useFetch.js';
+import { StateSet } from './useState.js';
 export const useMousePosition = MousePosition;
-export const useState = State;
+export const useDivMousePosition = DivMousePosition;
+export const useFetch = FetchsData;
+export const useState = StateSet; 
+// 

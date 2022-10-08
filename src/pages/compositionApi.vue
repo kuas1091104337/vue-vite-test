@@ -1,13 +1,16 @@
 <script setup>
-// import MousePosition from '../components/MousePosition.vue';
 
 </script>
 
 <template>
-  <img src="@/assets/img/logo.png" alt="logo">
-  <MousePosition/>
+  <!-- <MousePosition/> -->
+  <DivMousePosition/>
+  <DivMousePosition/>
+  <StateTodo/>
+  <StateTodo/>
+  <FetchData/>
 </template>
 
 <style lang="scss">
-
+// import "@/assets/scss/layout.scss"
 </style>

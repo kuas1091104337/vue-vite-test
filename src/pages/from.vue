@@ -1,5 +1,6 @@
 <script setup>
-import axios from 'axios';
+import { apiGetHKAcityList } from '@/api/index.js';
+// import axios from 'axios'; 
 const emailData = ref(''),
       passwordData = ref(''),
       terms = ref(false),
@@ -37,14 +38,20 @@ watch(selectCity,(newCity) => {
   selectArea.value = '';
 });
 onMounted(() => {
-  axios.get('https://vue-lessons-api.herokuapp.com/city/list')
-  .then(function(res){
-    twZip.city = res.data.twzip.city;
-    // console.log(res.data); console.log(twZip.city);
-  }).catch(function(error){
-    console.log(error.response.data);
-    console.error(error.response.data.msg);
-  });
+  // axios.get('https://vue-lessons-api.herokuapp.com/city/list')
+  // .then(function(res){twZip.city = res.data.twzip.city})
+  // .catch(function(error){console.log(error.response.data)});
+
+  (async () => {
+    try{
+      const res = await apiGetHKAcityList();
+      twZip.city = res.data.twzip.city;
+      console.log(res.data);
+    }catch(error){
+      console.log(error.response.data);
+      throw new Error(error);
+    }
+  })();
 });
 watch(lazyVal,(newVal) => console.log('lazyVal : '+newVal));
 watch(numberVal,(newVal) => console.log('numberVal : '+newVal));

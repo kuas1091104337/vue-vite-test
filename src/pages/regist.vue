@@ -1,48 +1,45 @@
 <script setup>
-  import axios from 'axios';
+  import { apiPostHKAauthRegistered } from '@/api/index.js';
+  // import axios from 'axios'; 
   const isReg = ref(false),
         reg = reactive({
-          name:'',
+          username:'',
           password:'',
           sex:'',
           email:'',
           age:'',
           terms:false,
         }),
-        name = ref(''),
         errorMsg = reactive({msg:{}}),
-        regSubmit = () => {
-          axios.post('https://vue-lessons-api.herokuapp.com/auth/registered', reg)
-          .then(res => {
-            isReg.value = true;
+        regSubmit = async () => {
+          // axios.post('https://vue-lessons-api.herokuapp.com/auth/registered',reg)
+          // .then(res => isReg.value = res.data.success)
+          // .catch(error => errorHandle(error.response.data.error_message));
+          try{
+            const res = await apiPostHKAauthRegistered(reg);
+            // isReg.value = true;
+            isReg.value = res.data.success;
             console.log(res.data);
-          })
-          .catch(error => {
-            // 403 代表user輸入資料是錯的
-            // console.log(error.response.data);
-            console.error(error.response.data.error_message);
+          }catch(error){
+            console.log(error, error.response.data);
             errorHandle(error.response.data.error_message);
-          });
+            throw new Error(error.message);
+          }
         },
-        errorHandle = (errorObj) => {
-          errorMsg.msg = errorObj;
-          console.log(errorObj);
-          // for(let key in errorObj){errorMsg[key] = errorObj[key]}
-        };
+        errorHandle = (errorObj) => errorMsg.msg = errorObj;
 </script>
 
 <template>
 <form class="form" method="get">
   <div v-if="!isReg">
     <div class="formBox">
-      <label class="formBox_label" for="text">NAME</label>
-      <!-- v-model="reg.name" -->
+      <label class="formBox_label" for="username">NAME</label>
       <input
         type="text"
-        id="reg.name"
+        id="username"
         class="formBox_input"
         placeholder="輸入使用者名稱"
-        v-modle-save="reg.name"
+        v-model="reg.username"
       />
       <!-- v-model-save="reg.name" -->
       <p class="formBox_error" v-if="errorMsg.msg.username">
@@ -91,6 +88,7 @@
       <input 
         type="radio" 
         id="boy"
+        name="sex"
         class="formBox_radio"
         value="boy" 
         v-model="reg.sex"
@@ -99,11 +97,21 @@
       <input 
         type="radio"
         id="girl"
+        name="sex"
         class="formBox_radio"
         value="girl"
         v-model="reg.sex"
       />
       <label for="girl">girl</label>
+      <input 
+        type="radio"
+        id="both"
+        name="sex"
+        class="formBox_radio"
+        value="both"
+        v-model="reg.sex"
+      />
+      <label for="both">both</label>
     </div>
     <div class="formBox">
       <input

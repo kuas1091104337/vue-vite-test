@@ -28,14 +28,19 @@ watch(
         <RouterLink to="/regist">Regist</RouterLink>
         <RouterLink to="/about">About 7/9-20</RouterLink>
         <RouterLink to="/trans">Trans 7/21-24</RouterLink>
-        <RouterLink to="/event">event 7/25-32</RouterLink>
-        <RouterLink to="/oneWayDataFlow">one way data flow</RouterLink>
+        <RouterLink to="/event">Event 7/25-32</RouterLink>
+        <RouterLink to="/oneWayDataFlow">One way data flow</RouterLink>
         <RouterLink to="/gsap">GSAP</RouterLink>
         <RouterLink to="/course" :class="{acitve: watchLink === 'course'}">Course</RouterLink>
         <RouterLink to="/nested">Nested</RouterLink>
         <RouterLink to="/vuex">Vuex</RouterLink>
         <RouterLink to="/vuexApi">VuexApi</RouterLink>
         <RouterLink to="/compositionApi">CompositionApi</RouterLink>
+        <RouterLink to="/styleVarInjection">StyleVarInjection</RouterLink>
+        <RouterLink to="/vueI18n">VueI18n</RouterLink>
+        <RouterLink to="/suspense">Suspense</RouterLink>
+        <RouterLink to="/plugin">Plugin</RouterLink>
+        <RouterLink to="/aos">AOS</RouterLink>
       </nav>
     </div>
   </header>

@@ -1,5 +1,6 @@
 <script setup>
-import axios from 'axios';
+import { apiGetHKAcoursesList } from '@/api/index.js';
+// import axios from 'axios'; 
 import router from '@/router';
 const courseData = ref([]),
       toNewPage = (id) => {
@@ -11,13 +12,20 @@ const courseData = ref([]),
         // window.open(saveUrl.href) 開新網址
       };
 onMounted(() => {
-  axios.get('https://vue-lessons-api.herokuapp.com/courses/list')
-  .then(function(res){
-    courseData.value = res.data;
-    // console.log(res.data); console.log(courseData.value);
-  }).catch(function(error){
-    console.log(error.response.data);
-  });
+  // axios.get('https://vue-lessons-api.herokuapp.com/courses/list')
+  // .then(function(res){courseData.value = res.data})
+  // .catch(function(error){console.log(error.response.data)});
+
+  (async () => {
+    try{
+      const res = await apiGetHKAcoursesList();
+      courseData.value = res.data
+      console.log(res.data);
+    }catch(error){
+      console.log(error.response.data);
+      throw new Error(error);
+    }
+  })();
 });
 </script>
 

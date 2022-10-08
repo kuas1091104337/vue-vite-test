@@ -1,5 +1,6 @@
 <script setup>
-import axios from 'axios';
+import { apiGetHKAphotoList } from '@/api/index.js';
+// import axios from 'axios'; 
 const imgData = ref([]),
       imgIdx = ref(0),
       imgLength = ref(0),
@@ -32,15 +33,23 @@ const imgData = ref([]),
         });
       };
 onMounted(() => {
-  axios.get('https://vue-lessons-api.herokuapp.com/photo/list')
-  .then(function(res){
-    imgLoad(res.data)
-    // console.log(res.data);
-    // console.log(imgData.value.length);
-  }).catch(function(error){
-    console.log(error.response.data);
-    console.error(error.response.data.msg);
-  });
+  // axios.get('https://vue-lessons-api.herokuapp.com/photo/list')
+  // .then(function(res){imgLoad(res.data)})
+  // .catch(function(error){console.log(error.response.data)});
+
+  // const init = async () => {
+  (async () => {
+    try{
+      const res = await apiGetHKAphotoList();
+      imgLoad(res.data)
+      console.log(res.data);
+    }catch(error){
+      // console.log(error.response.data);
+      throw new Error(error);
+    }
+  })();
+  // };
+  // init();
 });
 </script>
 

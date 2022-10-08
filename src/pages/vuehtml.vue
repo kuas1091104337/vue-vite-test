@@ -1,16 +1,22 @@
 <script setup>
-import axios from 'axios';
-const html = ref('');
+import { apiGetHKAdomContent } from '@/api/index.js';
+// import axios from 'axios';
+const html = ref(''); 
 onMounted(() => {
-  axios.get('https://vue-lessons-api.herokuapp.com/dom/content')
-  .then(function(res){
-    console.log(res.data);
-    html.value = res.data
-    console.log(html.value);
-  }).catch(function(error){
-    console.log(error.response.data);
-    console.error(error.response.data.msg);
-  });
+  // axios.get('https://vue-lessons-api.herokuapp.com/dom/content')
+  // .then(function(res){html.value = res.data})
+  // .catch(function(error){console.log(error.response.data)});
+  
+  (async () => {
+    try{
+      const res = await apiGetHKAdomContent();
+      html.value = res.data;
+      console.log(res.data);
+    }catch(error){
+      console.log(error.response.data);
+      throw new Error(error);
+    }
+  })();
 });
 </script>
 
