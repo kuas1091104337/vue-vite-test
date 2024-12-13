@@ -1,12 +1,12 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { createI18n } from "vue-i18n";
-
 import App from '@/App.vue';
 import router from '@/router';
 import zh from '@/language/zh-TW.json';
 import en from "@/language/en-US.json";
 import jp from "@/language/jp-JP.json";
+import 'virtual:uno.css'
 import "virtual:svg-icons-register";
 import '@/assets/main.css';
 

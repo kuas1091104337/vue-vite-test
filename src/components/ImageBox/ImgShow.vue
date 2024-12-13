@@ -1,7 +1,7 @@
 <script setup>
 import { useVuexApiStore } from '@/stores/vuexApi.js';
 const store = useVuexApiStore();
-      console.log(store); 
+      console.log(store);
       // store.activeIdx store.photoArr store.isLoad
 </script>
 

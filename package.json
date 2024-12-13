@@ -18,11 +18,15 @@
     "vue-router": "^4.1.5"
   },
   "devDependencies": {
+    "@unocss/preset-uno": "^0.58.5",
+    "@unocss/transformer-directives": "^0.58.5",
+    "@unocss/transformer-variant-group": "^0.58.5",
     "@vitejs/plugin-vue": "^3.0.1",
     "flat": "^5.0.2",
     "fs-extra": "^10.1.0",
     "sass": "^1.54.8",
     "spreadsheet-to-json": "^2.0.0",
+    "unocss": "^0.58.5",
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.4",
     "vite": "^3.0.1",

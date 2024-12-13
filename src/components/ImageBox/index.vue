@@ -5,7 +5,7 @@ const store = useVuexApiStore();
 
 <template>
 <div class="vuexApi_box" v-show="store.isLoad">
-  <ImgShow /> 
+  <ImgShow />
   <ChangeBtn />
 </div>
 </template>
@@ -13,6 +13,7 @@ const store = useVuexApiStore();
 <style lang="scss">
 .vuexApi_box{
   width: 516px;
+  background-color:rgba(#000,.5);
   margin:0 auto;
 }
 </style>

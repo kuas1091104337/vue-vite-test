@@ -1,26 +1,26 @@
 import axios from 'axios';
 const herokuapp = axios.create({ 
-  baseURL:'https://vue-lessons-api.herokuapp.com/',
-}); 
-
+  baseURL:'https://vue-lessons-api.vercel.app/',
+});
+// https://vue-lessons-api.herokuapp.com/courses/list
 herokuapp.interceptors.request.use(
   (config) => {
-    console.log("請求發起前",config)
+    console.log("請求發起前")
+    console.log(config)
+    console.log(config.data)
     return config;
   },
-  (error) => {
-    return Promise.reject(error)
-  }
+  (error) => Promise.reject(error)
 );
 
 herokuapp.interceptors.response.use(
   (response) => { 
-    console.log("請求發起後",response)
+    console.log("請求發起後")
+    console.log(response)
+    console.log(response.data)
     return response;
   },
-  (error) => {
-    return Promise.reject(error)
-  }
+  (error) => Promise.reject(error)
 );
 
 export const getHKAphotoList = () => herokuapp.get("/photo/list");

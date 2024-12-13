@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url';
 import path from "path";
 
+import UnoCSS from 'unocss/vite'
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import AutoImport from "unplugin-auto-import/vite";
@@ -11,6 +12,7 @@ import Layouts from 'vite-plugin-vue-layouts';
 
 export default defineConfig({
   plugins: [
+    UnoCSS(),
     vue(),
     AutoImport({
       // imports 是加入按裝套件的地方 API自動引入
